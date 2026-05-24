@@ -9,7 +9,10 @@
       "Bash(zmq-inference infer *)",
       "Bash(python -c ' *)",
       "Bash(gh auth *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m 'refactor: complete package overhaul → zmq_inference *)",
+      "Bash(git push *)",
+      "Bash(git config *)"
     ]
   }
 }
