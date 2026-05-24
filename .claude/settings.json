@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(python -c \"import zmq_inference; print\\(zmq_inference.__version__\\)\")",
+      "Bash(python -m pytest tests/ -v)",
+      "Bash(zmq-inference --help)",
+      "Bash(zmq-inference serve *)",
+      "Bash(zmq-inference infer *)",
+      "Bash(python -c ' *)",
+      "Bash(gh auth *)",
+      "Bash(git add *)"
+    ]
+  }
+}

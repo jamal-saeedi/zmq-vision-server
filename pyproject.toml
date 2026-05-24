@@ -1,0 +1,85 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zmq-inference"
+version = "0.2.0"
+description = "ZMQ-based high-performance inference server and client for PyTorch and TensorFlow models"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Jamal Saeedi", email = "jamal.saeedi7@gmail.com" }]
+keywords = ["zmq", "inference", "pytorch", "tensorflow", "deep-learning", "server"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "pyzmq>=25.0",
+    "Pillow>=9.0",
+    "numpy>=1.23",
+    "click>=8.1",
+]
+
+[project.optional-dependencies]
+torch = [
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "timm>=0.9",
+]
+tf = [
+    "tensorflow>=2.10",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=4.1",
+    "black>=23.0",
+    "ruff>=0.1",
+    "mypy>=1.5",
+]
+
+[project.scripts]
+zmq-inference = "zmq_inference.cli.main:cli"
+
+[project.urls]
+Homepage = "https://github.com/jamal-saeedi/zmq-inference-server-client-pytorch-tf"
+Repository = "https://github.com/jamal-saeedi/zmq-inference-server-client-pytorch-tf"
+Issues = "https://github.com/jamal-saeedi/zmq-inference-server-client-pytorch-tf/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["zmq_inference*"]
+
+[tool.setuptools.package-data]
+"zmq_inference.data" = ["imagenet_classes.json"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-v"
