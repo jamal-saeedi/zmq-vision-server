@@ -59,3 +59,4 @@ desktop.ini
 .env
 *.pem
 *.key
+.claude/
